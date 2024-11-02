@@ -142,7 +142,7 @@
   
   rotas.get("/mostrar", async function (req, res) {
     try {
-        const projeto = await projeto.findAll(); // Busca todos os registros
+        const projeto = await aluno.findAll(); // Busca todos os registros
         res.json(projeto); // Retorna os registros em formato JSON
     } catch (error) {
         res.status(500).json({ message: `Erro ao buscar aluno: ${error}` }); // Retorna erro ao cliente
@@ -153,5 +153,5 @@
   
   //###Servidor###
   rotas.listen(3031, function () {
-    console.log("Server is running on port 3031");
+    console.log("Server is running on port 3306");
   });

@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
- 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
- 
 <body>
     <h1>Informações</h1>
     <div id="alunosContainer"></div>
- 
+
     <script>
         async function carregarAlunos() {
- 
-            const resposta = await fetch("http://localhost:3031/mostrar");
-            const aluno = await resposta.json();
- 
-            const container = document.getElementById("alunosContainer");
-            container.innerHTM = "";
- 
-            produtos.forEach((aluno) => {
- 
-                const alunoDiv = document.createElement("div");
-                alunoDiv.innerHTML = `<p>ID aluno: ${aluno.id}, Nome: ${aluno.nome_aluno}, email aluno: ${aluno.email_aluno}</p>`;
-                container.appendChild(alunoDiv);
-            })
+            try {
+                const resposta = await fetch("http://localhost:3031/mostrar");
+                const alunos = await resposta.json(); // Mudança aqui
+
+                const container = document.getElementById("alunosContainer");
+                container.innerHTML = ""; // Correção de innerHTM para innerHTML
+
+                alunos.forEach((aluno) => { // Mudança de produtos para alunos
+                    const alunoDiv = document.createElement("div");
+                    alunoDiv.innerHTML = `<p>ID aluno: ${aluno.id}, Nome: ${aluno.nome_aluno}, email aluno: ${aluno.email_aluno}</p>`;
+                    container.appendChild(alunoDiv);
+                });
+            } catch (error) {
+                console.error("Erro ao carregar alunos:", error);
+            }
         }
- 
-        carregarAlunos()
+
+        carregarAlunos();
     </script>
 </body>
- 
 </html>

@@ -13,12 +13,12 @@
         async function carregarAlunos() {
             try {
                 const resposta = await fetch("http://localhost:3031/mostrar");
-                const alunos = await resposta.json(); // Mudança aqui
+                const alunos = await resposta.json();
 
                 const container = document.getElementById("alunosContainer");
-                container.innerHTML = ""; // Correção de innerHTM para innerHTML
+                container.innerHTML = "";
 
-                alunos.forEach((aluno) => { // Mudança de produtos para alunos
+                alunos.forEach((aluno) => { 
                     const alunoDiv = document.createElement("div");
                     alunoDiv.innerHTML = `<p>ID aluno: ${aluno.id}, Nome: ${aluno.nome_aluno}, email aluno: ${aluno.email_aluno}</p>`;
                     container.appendChild(alunoDiv);
